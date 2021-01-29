@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des catalogue{% endblock %}
+
+{% block body %}
+    <h1>Liste des catalogue</h1>
+    <table class="table">
+        <thead>
+            <th>ID</th>
+            <th>Name</th>
+            <th>nb_produit</th>
+            <th>Actions</th>
+        </thead>
+        <tbody>
+            {# On boucle sur les catalogue #}
+            {% for catalogue in catalogues %}
+                <tr>
+                    <td>{{ catalogue.id }}</td>
+                    <td>{{ catalogue.name }}</td>
+                 
+                    <td><a href="{{path('admin_edite_user',{'id':catalogue.id})}}" class="btn btn-warning">Edite</a></td>
+                </tr>
+                
+            {% else %}
+                <p>Aucun catalogue</p>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

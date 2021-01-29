@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Produit{% endblock %}
+
+{% block body %}
+    <h1>Liste des Produit</h1>
+    <table class="table">
+        <thead>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Quantité</th>
+            <th>Prix</th>
+            <th>Catalogue </th>
+            <th>Actions</th>
+        </thead>
+        <tbody>
+            {# On boucle sur les Produit #}
+            {% for produit in produits %}
+                <tr>
+                    <td>{{ produit.id }}</td>
+                    <td>{{ produit.name }}</td>
+                    <td> {{ produit.quantite }} </td>
+                    <td> {{ produit.prix }} </td>
+                    <td> {{produit.catalogue ?produit.catalogue.name :""}}
+                    </td>
+                    <td><a href="{{path('produit_edite',{'id':produit.id})}}" class="btn btn-warning">Edite</a></td>
+                </tr>
+                
+            {% else %}
+                <p>Aucun produit</p>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
